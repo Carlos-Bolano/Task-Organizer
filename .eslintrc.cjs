@@ -29,6 +29,9 @@ module.exports = {
   ],
   rules: {
     'react/react-in-jsx-scope': 'off',
-    'import/no-absolute-path': 'off'
+    'import/no-absolute-path': 'off',
+    'no-trailing-spaces': 'off',
+    'multiline-ternary': 'off',
+    'react/prop-types': 'off'
   }
 }
