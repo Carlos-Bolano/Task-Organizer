@@ -32,6 +32,7 @@ module.exports = {
     'import/no-absolute-path': 'off',
     'no-trailing-spaces': 'off',
     'multiline-ternary': 'off',
-    'react/prop-types': 'off'
+    'react/prop-types': 'off',
+    'next-line quotes': 'off'
   }
 }

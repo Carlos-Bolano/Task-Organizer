@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import { useAuth } from '../../context/AuthContext'
+import { useAuth } from '../context/AuthContext'
 // Icons
-import { RiMailLine, RiLockLine, RiEyeLine, RiEyeOffLine, RiUserLine } from 'react-icons/ri'
+import { RiMailLine, RiLockLine, RiEyeLine, RiEyeOffLine, RiUserLine, RiUserStarLine } from 'react-icons/ri'
 
 function RegisterForm () {
   const [showPassword, setShowPassword] = useState(false)
@@ -39,6 +39,18 @@ function RegisterForm () {
               className='py-3 pl-8 pr-4 bg-secondary-900 text-gray-100 w-full outline-none rounded-lg'
               placeholder='Nombre de usuario'
               {...register('username', { required: true })} 
+            />
+
+          </div>
+          <div className='relative mb-4'>
+            <RiUserStarLine className='absolute top-1/2 -translate-y-1/2 left-2 text-primary' />
+
+            <input
+              type='text'
+              required
+              className='py-3 pl-8 pr-4 bg-secondary-900 text-gray-100 w-full outline-none rounded-lg'
+              placeholder='Ocupacion: Estudiante, Profesor, etc'
+              {...register('ocupation', { required: true })} 
             />
 
           </div>
