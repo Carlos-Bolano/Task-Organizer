@@ -31,25 +31,25 @@ export default function Navbar () {
           <div className='flex flex-col lg:flex-row gap-4 max-w-max lg:mr-16'>
             <Link
               to={'/tasks'}
-              className='flex items-center gap-1 py-2 px-8 rounded-lg text-black bg-white ring-1 ring-black'
+              className='flex items-center gap-1 py-2 px-8 rounded-lg font-semibold text-black bg-white ring-2 ring-black'
             >
-              <BiTask />
-              Tasks
+              <BiTask className='w-5 h-5 font-bold' />
+              Tareas
             </Link>
             <Link
               to={'/add-task'}
-              className=' flex items-center gap-1 py-2 px-8 rounded-lg  text-white bg-black ring-1 ring-black'
+              className='flex items-center gap-1 py-2 px-8 rounded-lg font-semibold text-white bg-black ring-2 ring-black'
             >
-              <BiAddToQueue /> Add Task
+              <BiAddToQueue className='w-5 h-5 font-bold' /> Crear Tarea
             </Link>
           </div>
-          <button onClick={logout} className='flex items-center gap-1 py-2 px-8 rounded-lg  bg-primary ring-1 ring-black'>
-            <BiLogOutCircle /> logout
+          <button onClick={logout} className='flex items-center gap-1 py-2 px-8 rounded-lg font-semibold bg-primary ring-2 ring-black'>
+            <BiLogOutCircle className='w-5 h-5 font-bold' /> Cerrar Sesion
           </button>
 
         </div>
         <button className='lg:hidden text-4xl font-bold' onClick={handleMenu}>
-        <RiMenuFill/> 
+        <RiMenuFill /> 
       </button>
       </nav>
     </header>

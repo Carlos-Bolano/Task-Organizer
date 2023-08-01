@@ -9,15 +9,12 @@ function TasksPage () {
           <h3 className='text-[2.25rem] font-bold leading-10'>My Tasks</h3>
           <h4 className='text-[1.25rem] font-medium text-gray-400' >April 14 , 2023</h4>
         </div>
-        <button className=' bg-secondary-900 text-white text-xl py-2 px-4 rounded-2xl'>
-         <span className='flex flex-row items-center justify-center gap-1'>
-         <RiFilterLine />
-         Filter 
-         </span>
+        <button className='flex items-center gap-1 py-2 px-8 rounded-lg font-semibold bg-secondary-900 text-white ring-2 ring-black'>
+         <RiFilterLine className='w-5 h-5 font-bold' /> Filter 
         </button>
       </div>
       <div className='flex flex-col gap-4'>
-           
+      
       </div>
     </div>
   )
