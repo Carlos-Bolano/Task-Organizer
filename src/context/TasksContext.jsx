@@ -18,7 +18,14 @@ export function TaskProvider ({ children }) {
   }
 
   const createTask = async (task) => {
-    const res = await createTaskRequest(task)
+    const newTask = {
+      title: task.title,
+      description: task.description,
+      date: new Date(task.date).toISOString(),
+      category: task.category
+    }
+  
+    const res = await createTaskRequest(newTask)
     console.log(res)
   }
   return (
