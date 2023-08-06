@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { useAuth } from '../context/AuthContext'
 // Icons
@@ -8,11 +8,16 @@ import { RiMailLine, RiLockLine, RiEyeLine, RiEyeOffLine } from 'react-icons/ri'
 function LoginForm () {
   const [showPassword, setShowPassword] = useState(false)
   const { register, handleSubmit } = useForm()
-  const { signin, errors } = useAuth()
+  const { signin, errors, isAutenticated } = useAuth()
+  const navigate = useNavigate()
 
-  const onSubmit = handleSubmit(async (values) => {
-    signin(values)
+  const onSubmit = handleSubmit(async (data) => {
+    signin(data)
   })
+
+  useEffect(() => {
+    if (isAutenticated) navigate('/tasks')
+  }, [isAutenticated])
 
   return (
       <section className='w-auto'>

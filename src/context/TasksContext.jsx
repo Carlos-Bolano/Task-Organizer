@@ -1,5 +1,11 @@
 import { createContext, useContext, useState } from 'react'
-import { createTaskRequest, getTasksRequest } from '../api/tasks'
+import { 
+  createTaskRequest,
+  getTaskRequest, 
+  getTasksRequest, 
+  updateTaskRequest, 
+  deleteTaskRequest 
+} from '../api/tasks'
 
 const TaskContext = createContext()
 
@@ -14,19 +20,40 @@ export function TaskProvider ({ children }) {
    
   const getTasks = async () => {
     const res = await getTasksRequest()
-    console.log(res.data)
+    setTasks(res.data)
+  }
+  
+  const getTask = async (id) => {
+    try {
+      const res = await getTaskRequest(id)
+      return res.data
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const createTask = async (task) => {
-    const newTask = {
-      title: task.title,
-      description: task.description,
-      date: new Date(task.date).toISOString(),
-      category: task.category
+    const res = await createTaskRequest(task)
+    return res
+  }
+
+  const updateTask = async (id, task) => {
+    try {
+      const res = updateTaskRequest(id, task)
+      return res
+    } catch (error) {
+      console.log(error)
     }
-  
-    const res = await createTaskRequest(newTask)
-    console.log(res)
+  }
+
+  const deleteTask = async (id) => {
+    try {
+      const res = await deleteTaskRequest(id)
+      if (res.status === 204 && tasks.length > 1) setTasks(tasks.filter((task) => task.id !== id))
+      if (res.status === 204 && tasks.length <= 1) getTasks()
+    } catch (error) {
+      console.log(error)
+    }
   }
   return (
     <TaskContext.Provider
@@ -34,7 +61,10 @@ export function TaskProvider ({ children }) {
         tasks,
         createTask,
         getTasks,
-        setTasks
+        getTask,
+        setTasks,
+        updateTask,
+        deleteTask
       }}
     >
       {children}

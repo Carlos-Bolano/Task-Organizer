@@ -1,24 +1,50 @@
 import { useForm } from 'react-hook-form'
 import { RiSave3Line } from 'react-icons/ri'
 import { useTasks } from '../context/TasksContext'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useEffect } from 'react'
 
-import utc from 'dayjs/plugin/utc'
 import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
 dayjs.extend(utc)
 
 function TaskForm () {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
+    setValue
   } = useForm()
 
-  const { createTask } = useTasks()
+  const { createTask, getTask, updateTask } = useTasks()
+  const navigate = useNavigate()
+  const params = useParams()
+
+  useEffect(() => {
+    async function loadTask () {
+      if (params.id) {
+        const task = await getTask(params.id)
+        setValue('title', task.title)
+        setValue('description', task.description)
+        setValue('category', task.category)
+        setValue('date', dayjs.utc(task.date).format('YYYY-MM-DD'))
+      }
+    }
+    loadTask()
+  }, [])
 
   const onSubmit = handleSubmit((data) => {
-    createTask(data)
+    const dataValid = {
+      ...data,
+      date: data.date ? dayjs(data.date).utc().format() : undefined
+    } 
+    if (params.id) {
+      updateTask(params.id, dataValid)
+    } else {
+      createTask(dataValid)
+    } 
+    navigate('/tasks')
   })
-  console.log(errors)
   return (
     <form
       onSubmit={onSubmit}
@@ -87,32 +113,30 @@ function TaskForm () {
               type='date'
               required
               className='py-3 px-4 bg-[#D9D9D9] text-black text-base w-full outline-none rounded-lg'
-              {...register('date', {
-                required: 'Fecha es requerida',
-                validate: (value) => {
-                  if (value.length === 0) {
-                    return 'fecha es requerida'
-                  }
-                  if (new Date(value) < new Date()) {
-                    return 'fecha no puede ser anterior a hoy'
-                  }
-                }
-              })}
+              {...register('date')}
             />
-            {errors.date && (
-            <p className='text-red-500 text-sm'>{errors.date.message}</p>
-            )}
           </div>
         </div>
-        <div className='w-full flex flex-col bg-red-600'>
-          <button
+        <div className='w-full flex flex-col'>
+         {
+          params.id ? (
+            <button
+            onClick={onSubmit}
+            type='submit'
+            className=' flex items-center justify-center gap-1 py-2 px-8 rounded-lg font-semibold bg-primary text-black ring-2 ring-black'
+          >
+            <RiSave3Line className='w-5 h-5 font-bold' />
+            Actualizar
+          </button>) : (
+            <button
             onClick={onSubmit}
             type='submit'
             className=' flex items-center justify-center gap-1 py-2 px-8 rounded-lg font-semibold bg-primary text-black ring-2 ring-black'
           >
             <RiSave3Line className='w-5 h-5 font-bold' />
             Guardar
-          </button>
+          </button>)
+         }
         </div>
       </div>
     </form>

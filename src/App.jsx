@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage'
 import ProtectedRoute from './ProtectedRoute'
 import LayoutHome from './layouts/LayoutHome'
 import { TaskProvider } from './context/TasksContext'
+import SeeTaskPage from './pages/SeeTaskPage'
 
 function App () {
   return (
@@ -23,7 +24,8 @@ function App () {
             <Route element={<ProtectedRoute />}>
               <Route element={<LayoutHome />}>
                 <Route path='/tasks' element={<TasksPage />} />
-                <Route path='/tasks/:id' element={<TasksFormPage />} />
+                <Route path='/tasks/:id' element={<SeeTaskPage />} />
+                <Route path='/update-task/:id' element={<TasksFormPage />} />
                 <Route path='/add-task' element={<TasksFormPage />} />
                 <Route path='/profile' element={<ProfilePage />} />
               </Route>

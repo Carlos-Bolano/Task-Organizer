@@ -1,4 +1,4 @@
-import { RiMenuFill } from 'react-icons/ri'
+import { RiMenuFill, RiCloseLine } from 'react-icons/ri'
 import { BiLogOutCircle, BiTask, BiAddToQueue } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
@@ -31,26 +31,32 @@ export default function Navbar () {
           <div className='flex flex-col lg:flex-row gap-4 max-w-max lg:mr-16'>
             <Link
               to={'/tasks'}
-              className='flex items-center gap-1 py-2 px-8 rounded-lg font-semibold text-black bg-white ring-2 ring-black'
+              className='flex items-center gap-1 py-2 px-8 rounded-lg font-semibold text-secondary-900 bg-white ring-2 ring-secondary-900 hover:bg-secondary-900 hover:text-white transition-colors duration-300'
             >
               <BiTask className='w-5 h-5 font-bold' />
               Tareas
             </Link>
             <Link
               to={'/add-task'}
-              className='flex items-center gap-1 py-2 px-8 rounded-lg font-semibold text-white bg-black ring-2 ring-black'
+              className='flex items-center gap-1 py-2 px-8 rounded-lg font-semibold text-white bg-secondary-900 ring-2 ring-secondary-900 hover:bg-primary hover:text-secondary-900 transition-colors duration-300'
             >
               <BiAddToQueue className='w-5 h-5 font-bold' /> Crear Tarea
             </Link>
           </div>
-          <button onClick={logout} className='flex items-center gap-1 py-2 px-8 rounded-lg font-semibold bg-primary ring-2 ring-black'>
+          <button onClick={logout} className='flex items-center gap-1 py-2 px-8 rounded-lg font-semibold bg-primary ring-2 ring-secondary-900  hover:bg-secondary-900 hover:text-white transition-colors duration-300'>
             <BiLogOutCircle className='w-5 h-5 font-bold' /> Cerrar Sesion
           </button>
 
         </div>
-        <button className='lg:hidden text-4xl font-bold' onClick={handleMenu}>
-        <RiMenuFill /> 
-      </button>
+        {
+          showMenu ? (<button className='lg:hidden text-4xl font-bold' onClick={handleMenu}>
+          <RiCloseLine /> 
+          </button>) : (
+            <button className='lg:hidden text-4xl font-bold' onClick={handleMenu}>
+            <RiMenuFill /> 
+            </button>
+          )
+        }
       </nav>
     </header>
   )
