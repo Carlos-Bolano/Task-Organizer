@@ -97,9 +97,7 @@ function TaskForm () {
               {...register('category')}
               className='bg-[#D9D9D9] px-4 py-3 text-black text-base outline-none rounded-lg'
             >
-              <option className='w-full' value='Task'>
-                Tarea
-              </option>
+              <option value='Task'> Tarea</option>
               <option value='Work'>Trabajo</option>
               <option value='Study'>Estudio</option>
               <option value='Daily'>Diario</option>

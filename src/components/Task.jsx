@@ -1,23 +1,49 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useTasks } from '../context/TasksContext'
 
 function Task ({ task }) {
   const { title, description, category, date, state, _id } = task
   const [isTaskDone, setIsTaskDone] = useState(state)
+  const { updateTask } = useTasks()
+
+  const handleTaskDone = () => {
+    setIsTaskDone(!isTaskDone)
+    updateTask(_id, { ...task, state: !isTaskDone })
+  }
+
+  const TruncatedText = ({ text, maxLength }) => {
+    const truncated = text.length > maxLength ? text.substring(0, maxLength) + '...' : text
+    return truncated
+  }
+  // Text to small screen 
+  const titleTruncatedSm = TruncatedText({ text: title, maxLength: 35 })
+  const descriptionTruncatedSm = TruncatedText({ text: description, maxLength: 38 })
+  // Text to medium screen
+  const titleTruncatedMd = TruncatedText({ text: title, maxLength: 59 })
+  const descriptionTruncatedMd = TruncatedText({ text: description, maxLength: 130 })
+  // Text to large screen
+  const titleTruncatedLg = TruncatedText({ text: title, maxLength: 59 })
+  const descriptionTruncatedLg = TruncatedText({ text: description, maxLength: 130 })
+
   return (
     <article className=' max-w-[750px] p-4 gap-4 flex justify-between bg-white rounded-2xl drop-shadow-2xl'>
       <div className='flex justify-between items-center gap-4'>
-        {isTaskDone ? (<button onClick={() => setIsTaskDone(!isTaskDone)} className='flex items-center justify-center rounded-full p-4 bg-green-500'>
+        {isTaskDone ? (<button onClick={handleTaskDone} className='flex items-center justify-center rounded-full p-4 bg-green-500 transition-colors duration-300'>
           <img src='/isDone.svg' alt='chulo' className='w-5 max-w-min' /> 
-          </button>) : (<button onClick={() => setIsTaskDone(!isTaskDone)} className='flex items-center justify-center rounded-full p-4 bg-gray-300'>
+          </button>) : (<button onClick={handleTaskDone} className='flex items-center justify-center rounded-full p-4 bg-gray-300  transition-colors duration-300'>
           <img src='/isDone.svg' alt='chulo' className='w-5 max-w-min' />
           </button>)}
    
         <Link to={`/tasks/${_id}`}>
-          <h2 className='font-bold capitalize text-lg leading-5'>{title}</h2>
-          <p className='  font-normal leading-5 mt-1 text-base'>
-           {description}
-          </p>
+          <h2 className='font-bold text-lg leading-5 lg:hidden md:hidden sm:block'>{titleTruncatedSm}</h2>
+          <h2 className='font-bold text-lg leading-5 md:block hidden lg:hidden'>{titleTruncatedMd}</h2>
+          <h2 className='font-bold text-lg leading-5 hidden md:hidden lg:block'>{titleTruncatedLg}</h2>
+
+          <p className='font-normal leading-5 mt-1 text-base lg:hidden md:hidden'>{descriptionTruncatedSm}</p>
+          <p className='font-normal leading-5 mt-1 text-base md:block hidden lg:hidden'>{descriptionTruncatedMd}</p>
+          <p className='font-normal leading-5 mt-1 text-base hidden md:hidden lg:block'>{descriptionTruncatedLg}</p>
+
         </Link>
       </div>
       <div className='flex justify-between items-end flex-col'>
