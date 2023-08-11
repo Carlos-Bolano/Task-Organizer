@@ -97,10 +97,10 @@ function TaskForm () {
               {...register('category')}
               className='bg-[#D9D9D9] px-4 py-3 text-black text-base outline-none rounded-lg'
             >
-              <option value='Task'> Tarea</option>
-              <option value='Work'>Trabajo</option>
-              <option value='Study'>Estudio</option>
-              <option value='Daily'>Diario</option>
+              <option value='Tarea'>Tarea</option>
+              <option value='Trabajo'>Trabajo</option>
+              <option value='Estudio'>Estudio</option>
+              <option value='Diarias'>Diaria</option>
             </select>
           </div>
           <div className='flex flex-col gap-1 '>

@@ -43,7 +43,7 @@ export default function Navbar () {
               <BiAddToQueue className='w-5 h-5 font-bold' /> Crear Tarea
             </Link>
           </div>
-          <button onClick={logout} className='flex items-center gap-1 py-2 px-8 rounded-lg font-semibold bg-primary ring-2 ring-secondary-900  hover:bg-secondary-900 hover:text-white transition-colors duration-300'>
+          <button onClick={logout} className='flex items-center gap-1 py-2 px-8 rounded-lg font-semibold text-secondary-900 bg-white ring-2 ring-secondary-900 hover:bg-secondary-900 hover:text-white transition-colors duration-300'>
             <BiLogOutCircle className='w-5 h-5 font-bold' /> Cerrar Sesion
           </button>
 

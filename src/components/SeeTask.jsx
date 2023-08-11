@@ -14,7 +14,7 @@ function SeeTask ({ task }) {
   }
 
   return (
-    <section className='rounded-xl shadow-2xl bg-white overflow-hidden mt-8'>
+    <article className='rounded-xl shadow-2xl bg-white overflow-hidden mt-8'>
       <img
         src='https://tecnosoluciones.com/wp-content/uploads/2020/11/Cabecera.jpg'
         alt=''
@@ -47,7 +47,7 @@ function SeeTask ({ task }) {
           <span className='text-sm font-medium text-gray-800'>{new Date(date).toLocaleDateString()}</span>
         </div>
       </div>
-    </section>
+    </article>
   )
 }
 

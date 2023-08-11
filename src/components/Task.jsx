@@ -17,8 +17,8 @@ function Task ({ task }) {
     return truncated
   }
   // Text to small screen 
-  const titleTruncatedSm = TruncatedText({ text: title, maxLength: 35 })
-  const descriptionTruncatedSm = TruncatedText({ text: description, maxLength: 38 })
+  const titleTruncatedSm = TruncatedText({ text: title, maxLength: 39 })
+  const descriptionTruncatedSm = TruncatedText({ text: description, maxLength: 40 })
   // Text to medium screen
   const titleTruncatedMd = TruncatedText({ text: title, maxLength: 59 })
   const descriptionTruncatedMd = TruncatedText({ text: description, maxLength: 130 })
@@ -47,13 +47,13 @@ function Task ({ task }) {
         </Link>
       </div>
       <div className='flex justify-between items-end flex-col'>
-        { category === 'Task' && <span className='rounded-full text-center bg-slate-600 py-1 px-3 text-white text-xs'>{ category }</span> 
+        { category === 'Tarea' && <span className='rounded-full text-center bg-violet-600 py-1 px-3 text-white text-xs'>{ category }</span> 
         }
-         { category === 'Work' && <span className='rounded-full text-center bg-green-600 py-1 px-3 text-white text-xs'>{ category }</span> 
+         { category === 'Trabajo' && <span className='rounded-full text-center bg-green-600 py-1 px-3 text-white text-xs'>{ category }</span> 
         }
-         { category === 'Study' && <span className='rounded-full text-center bg-blue-600 py-1 px-3 text-white text-xs'>{ category }</span> 
+         { category === 'Estudio' && <span className='rounded-full text-center bg-blue-600 py-1 px-3 text-white text-xs'>{ category }</span> 
         }
-         { category === 'Daily' && <span className='rounded-full text-center bg-yellow-600 py-1 px-3 text-white text-xs'>{ category }</span> 
+         { category === 'Diarias' && <span className='rounded-full text-center bg-primary py-1 px-3 text-white text-xs'>{ category }</span> 
         }
         <span className='text-sm text-gray-500'>{ new Date(date).toLocaleDateString() }</span>
       </div>

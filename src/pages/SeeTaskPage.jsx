@@ -22,9 +22,9 @@ function SeeTaskPage () {
     loadTask()
   }, [])
   return (
-    <div>
+    <section className='container mx-auto p-4'>
      <SeeTask task={task} />
-    </div>
+    </section>
   )
 }
 
