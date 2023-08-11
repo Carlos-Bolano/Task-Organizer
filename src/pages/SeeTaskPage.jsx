@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useTasks } from '../context/TasksContext'
-import SeeTask from '../components/seeTask'
+import SeeTask from '../components/SeeTask'
 
 function SeeTaskPage () {
   const params = useParams()
