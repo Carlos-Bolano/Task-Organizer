@@ -13,15 +13,15 @@ export const useAuth = () => {
 }
 
 // Función para obtener el valor de una cookie por su nombre
-function getCookieValue(name) {
-  const cookies = document.cookie.split('; ');
+function getCookieValue (name) {
+  const cookies = document.cookie.split('; ')
   for (const cookie of cookies) {
-    const [cookieName, cookieValue] = cookie.split('=');
+    const [cookieName, cookieValue] = cookie.split('=')
     if (cookieName === name) {
-      return decodeURIComponent(cookieValue);
+      return decodeURIComponent(cookieValue)
     }
   }
-  return null; // Retorna null si no se encontró la cookie
+  return null // Retorna null si no se encontró la cookie
 }
 
 export const AuthProvider = ({ children }) => {
@@ -70,7 +70,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     async function checkLogin () {
-      const tokenFromCookie = getCookieValue('token');
+      const tokenFromCookie = getCookieValue('token')
 
       if (!tokenFromCookie) {
         setIsAutenticated(false)

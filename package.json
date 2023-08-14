@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --host --port 3000",
     "build": "vite build",
-    "start": "vite",
+    "start": "serve dist -s -n -L -p $PORT",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -19,7 +19,8 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.2",
     "react-icons": "^4.10.1",
-    "react-router-dom": "^6.14.1"
+    "react-router-dom": "^6.14.1",
+    "serve": "^14.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.14",

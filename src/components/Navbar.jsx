@@ -3,6 +3,7 @@ import { BiLogOutCircle, BiTask, BiAddToQueue } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { useAuth } from '../context/AuthContext'
+import ImageUser from '../assets/user-default.png'
 
 export default function Navbar () {
   const { user, logout } = useAuth()
@@ -17,7 +18,7 @@ export default function Navbar () {
       <nav className='flex justify-between flex-row items-center px-4 gap-4'>
         <div className='flex items-center gap-[6px] min-w-max '>
           <img
-            src='.././public/user-default.png'
+            src={ImageUser}
             alt={`foto de ${user.username}`}
             className='w-12 h-12 rounded-full object-cover border-2 border-secondary-100'
           />

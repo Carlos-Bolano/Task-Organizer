@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTasks } from '../context/TasksContext'
+import ImageCheck from '../assets/isDone.svg'
 
 function Task ({ task }) {
   const { title, description, category, date, state, _id } = task
@@ -30,9 +31,9 @@ function Task ({ task }) {
     <article className=' max-w-[750px] p-4 gap-4 flex justify-between bg-white rounded-2xl drop-shadow-2xl'>
       <div className='flex justify-between items-center gap-4'>
         {isTaskDone ? (<button onClick={handleTaskDone} className='flex items-center justify-center rounded-full p-4 bg-green-500 transition-colors duration-300'>
-          <img src='/isDone.svg' alt='chulo' className='w-5 max-w-min' /> 
+          <img src={ImageCheck} alt='chulo' className='w-5 max-w-min' /> 
           </button>) : (<button onClick={handleTaskDone} className='flex items-center justify-center rounded-full p-4 bg-gray-300  transition-colors duration-300'>
-          <img src='/isDone.svg' alt='chulo' className='w-5 max-w-min' />
+          <img src={ImageCheck} alt='chulo' className='w-5 max-w-min' />
           </button>)}
    
         <Link to={`/tasks/${_id}`}>

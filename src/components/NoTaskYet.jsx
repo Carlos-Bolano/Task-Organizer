@@ -1,12 +1,13 @@
 import React from 'react'
 import { BiAddToQueue } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
+import ImageNotTask from '../assets/notTaskYet.svg'
 
 function NoTaskYet () {
   return (
     <article className='flex flex-col items-center justify-center pt-8 max-w-sm mx-auto'>
       <h1 className='text-3xl font-bold mb-8 text-secondary-900'>No tienes tareas aun</h1>
-      <img src='../../public/notTaskYet.svg' className='w-full h-full mb-8' />
+      <img src={ImageNotTask} className='w-full h-full mb-8' />
       <div className=''>
         <Link
           to={'/add-task'}
