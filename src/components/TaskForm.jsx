@@ -16,7 +16,7 @@ function TaskForm () {
     setValue
   } = useForm()
 
-  const { createTask, getTask, updateTask } = useTasks()
+  const { createTask, getTask, updateTask, getTasks } = useTasks()
   const navigate = useNavigate()
   const params = useParams()
 
@@ -40,8 +40,10 @@ function TaskForm () {
     } 
     if (params.id) {
       updateTask(params.id, dataValid)
+      getTasks()
     } else {
       createTask(dataValid)
+      getTasks()
     } 
     navigate('/tasks')
   })

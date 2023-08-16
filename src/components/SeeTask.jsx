@@ -6,11 +6,12 @@ import { useTasks } from '../context/TasksContext'
 function SeeTask ({ task }) {
   const { title, description, date, category, _id } = task
   const navigate = useNavigate()
-  const { deleteTask } = useTasks()
+  const { deleteTask, getTasks } = useTasks()
 
   const onClick = (id) => {
     deleteTask(id)
     navigate('/tasks')
+    getTasks()
   }
 
   return (
