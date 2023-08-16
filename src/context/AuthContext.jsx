@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react'
-import { loginRequest, registerRequest, verifyTokenRequest } from '../api/auth'
-import Cookies from 'js-cookie'
+import { logOutRequest, loginRequest, registerRequest, verifyTokenRequest } from '../api/auth'
 
 export const AuthContext = createContext()
 
@@ -12,31 +11,22 @@ export const useAuth = () => {
   return context 
 }
 
-// Función para obtener el valor de una cookie por su nombre
-function getCookieValue (name) {
-  const cookies = document.cookie.split('; ')
-  for (const cookie of cookies) {
-    const [cookieName, cookieValue] = cookie.split('=')
-    if (cookieName === name) {
-      return decodeURIComponent(cookieValue)
-    }
-  }
-  return null // Retorna null si no se encontró la cookie
-}
-
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [isAutenticated, setIsAutenticated] = useState(false)
-  const [errors, setErrrors] = useState([])
+  const [errors, setErrors] = useState([])
   const [loading, setLoading] = useState(true)
 
   const signup = async (user) => {
     try {
       const res = await registerRequest(user)
-      setUser(res.data)
-      setIsAutenticated(true)
+      if (res.status === 200) {
+        setUser(res.data)
+        setIsAutenticated(true)
+      }
     } catch (error) {
-      setErrrors(error.response.data)
+      console.log(error.response.data)
+      setErrors(error.response.data.message)
     }
   }
 
@@ -46,15 +36,12 @@ export const AuthProvider = ({ children }) => {
       setUser(res.data)
       setIsAutenticated(true)
     } catch (error) {
-      if (Array.isArray(error.response.data)) {
-        return setErrrors(error.response.data)
-      }
-      setErrrors([error.response.data.message])
+      console.log(error)
     }
   }
 
-  const logout = () => {
-    Cookies.remove('token')
+  const logout = async () => {
+    await logOutRequest()
     setUser(null)
     setIsAutenticated(false)
   }
@@ -62,7 +49,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     if (errors.length > 0) {
       const timer = setTimeout(() => {
-        setErrrors([])
+        setErrors([])
       }, 5000)
       return () => clearTimeout(timer)  
     }
@@ -70,30 +57,18 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     async function checkLogin () {
-      const tokenFromCookie = getCookieValue('token')
+      const res = await verifyTokenRequest()
 
-      if (!tokenFromCookie) {
+      if (res.data === false) {
         setIsAutenticated(false)
         setLoading(false)
         return setUser(null)
       }
-      try {
-        const res = await verifyTokenRequest(tokenFromCookie)
 
-        if (!res.data) {
-          setIsAutenticated(false) 
-          setLoading(false)
-          return
-        }     
-
-        setUser(res.data)
+      if (res.data?.token) {
         setIsAutenticated(true)
+        setUser(res.data)
         setLoading(false)
-      } catch (error) {
-        console.log(error)
-        setIsAutenticated(false)
-        setLoading(false)
-        setUser(null)
       }
     }
     checkLogin()
