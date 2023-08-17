@@ -12,10 +12,6 @@ puedes crear, leer, actualizar y eliminar tareas de manera sencilla. Esto demues
 
 aqui encuentras el link al repositorio de mi backend
 -https://github.com/Carlos-Bolano/API-Task-Manager
- 
-
-## ¿Qué he aprendido en este proyecto? 🙇🏻 
-
 
 
 ## Tecnologías 🛠
@@ -53,4 +49,13 @@ Sigue estos pasos para clonar y configurar el proyecto en tu máquina local.
 
 ```bash
 git clone https://github.com/Carlos-Bolano/Task-Organizer.git
+
+# Navega al directorio del proyecto
+cd Task-Organizer
+
+# Instala las dependencias del proyecto
+npm install
+
+# Para ejecutar el proyecto en modo de desarrollo, utiliza el siguiente comando:
+npm run dev
  
