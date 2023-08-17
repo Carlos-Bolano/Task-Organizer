@@ -52,12 +52,12 @@ git clone https://github.com/Carlos-Bolano/Task-Organizer.git
 ```
 
 2. Navega al directorio del proyecto
-   ```bash
+ ```bash
    cd Task-Organizer
    ```
 
-3. Instala las dependencias del proyecto
- ```bash
+4. Instala las dependencias del proyecto
+```bash
    npm install
    ```
 
