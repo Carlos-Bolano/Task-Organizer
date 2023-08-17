@@ -53,12 +53,12 @@ git clone https://github.com/Carlos-Bolano/Task-Organizer.git
 
 2. Navega al directorio del proyecto
  ```bash
-   cd Task-Organizer
+cd Task-Organizer
    ```
 
 4. Instala las dependencias del proyecto
 ```bash
-   npm install
+npm install
    ```
 
 4. Para ejecutar el proyecto en modo de desarrollo, utiliza el siguiente comando:
