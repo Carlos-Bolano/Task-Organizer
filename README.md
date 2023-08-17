@@ -49,13 +49,20 @@ Sigue estos pasos para clonar y configurar el proyecto en tu máquina local.
 
 ```bash
 git clone https://github.com/Carlos-Bolano/Task-Organizer.git
+```
 
-# Navega al directorio del proyecto
-cd Task-Organizer
+2. Navega al directorio del proyecto
+   ```bash
+   cd Task-Organizer
+   ```
 
-# Instala las dependencias del proyecto
-npm install
+3. Instala las dependencias del proyecto
+ ```bash
+   npm install
+   ```
 
-# Para ejecutar el proyecto en modo de desarrollo, utiliza el siguiente comando:
+4. Para ejecutar el proyecto en modo de desarrollo, utiliza el siguiente comando:
+```bash
 npm run dev
+   ```
  
