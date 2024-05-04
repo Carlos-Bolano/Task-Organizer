@@ -45,7 +45,7 @@ function TaskForm () {
       createTask(dataValid)
       getTasks()
     } 
-    navigate('/tasks')
+    navigate('/')
   })
   return (
     <form

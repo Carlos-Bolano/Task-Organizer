@@ -31,7 +31,7 @@ export default function Navbar () {
 
           <div className='flex flex-col lg:flex-row gap-4 max-w-max lg:mr-16'>
             <Link
-              to={'/tasks'}
+              to={'/'}
               className='flex items-center gap-1 py-2 px-8 rounded-lg font-semibold text-secondary-900 bg-white ring-2 ring-secondary-900 hover:bg-secondary-900 hover:text-white transition-colors duration-300'
             >
               <BiTask className='w-5 h-5 font-bold' />

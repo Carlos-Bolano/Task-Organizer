@@ -12,7 +12,7 @@ function RegisterForm () {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (isAutenticated) navigate('/tasks')
+    if (isAutenticated) navigate('/')
   }, [isAutenticated])
 
   const onSubmit = handleSubmit(async (values) => {

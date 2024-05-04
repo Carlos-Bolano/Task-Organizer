@@ -10,7 +10,7 @@ function SeeTask ({ task }) {
 
   const onClick = (id) => {
     deleteTask(id)
-    navigate('/tasks')
+    navigate('/')
     getTasks()
   }
 

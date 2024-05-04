@@ -16,7 +16,7 @@ function LoginForm () {
   })
 
   useEffect(() => {
-    if (isAutenticated) navigate('/tasks')
+    if (isAutenticated) navigate('/')
   }, [isAutenticated])
 
   return (
