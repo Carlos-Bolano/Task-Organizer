@@ -7,15 +7,18 @@ import { RiMailLine, RiLockLine, RiEyeLine, RiEyeOffLine } from 'react-icons/ri'
 
 function LoginForm () {
   const [showPassword, setShowPassword] = useState(false)
+  const [sending, setSending] = useState(false)
   const { register, handleSubmit } = useForm()
   const { signin, errors, isAutenticated } = useAuth()
   const navigate = useNavigate()
 
   const onSubmit = handleSubmit(async (data) => {
+    setSending(true)
     signin(data)
   })
 
   useEffect(() => {
+    setSending(false)
     if (isAutenticated) navigate('/')
   }, [isAutenticated])
 
@@ -62,9 +65,10 @@ function LoginForm () {
         
             <button
               type='submit'
-              className='bg-primary text-secondary-900 uppercase font-bold text-sm w-full py-3 px-4 rounded-lg'
+              className='bg-primary cursor-pointer text-secondary-900 uppercase font-bold text-sm w-full py-3 px-4 rounded-lg'
+
             >
-              Ingresar
+            {sending ? 'Cargando...' : 'Iniciar sesión'}
             </button>
     
         </form>

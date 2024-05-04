@@ -93,7 +93,7 @@ function RegisterForm () {
           <div>
             <button
               type='submit'
-              className='bg-primary text-secondary-900 uppercase font-bold text-sm w-full py-3 px-4 rounded-lg'
+              className='bg-primary cursor-pointer text-secondary-900 uppercase font-bold text-sm w-full py-3 px-4 rounded-lg'
             >
               Registrarme
             </button>
