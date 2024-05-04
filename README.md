@@ -2,7 +2,7 @@
 <!-- ![Imagen del proyecto](https://github.com/timmyandersonpro/kata_pixar/blob/main/assets/ele_trailer.jpg?raw=true) -->
 
 ## Ejemplo en vivo
-- https://manejador-de-tareas.vercel.app/tasks
+- https://manejador-de-tareas.vercel.app
 
 ## Descripción 📑
  Gestor de Tareas es mi proyecto personal de una aplicación de gestión de tareas construida con tecnologías modernas como React, React Hook Form, Day.js, Axios, React Router Dom y React Icons. Esta aplicación muestra mis habilidades en el desarrollo web y cómo puedo crear soluciones prácticas para problemas comunes.
